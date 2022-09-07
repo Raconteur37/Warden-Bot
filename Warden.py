@@ -39,8 +39,7 @@ c = conn.cursor()
 #        name text,
 #        gems integer)""")
 
-#c.execute(""" CREATE TABLE IF NOT EXISTS wardenMoniter (
-#        general integer)""")
+#c.execute(""" CREATE TABLE IF NOT EXISTS wardenMoniter ( edtrhg
 
 @client.event
 async def on_ready():
@@ -187,6 +186,8 @@ async def ping_server_command(msg):
 #         'UPDATE wardenMoniter SET general = ?',
 #         (time,)) 
 #         print("Updated general final time.") 
+
+
 
 
 
