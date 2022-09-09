@@ -1,5 +1,4 @@
 import asyncio
-from asyncio.windows_events import NULL
 import os
 import discord
 # python3 -m pip install (package).py fixes many problems
@@ -11,15 +10,9 @@ from discord import channel
 from discord.client import client
 from discord.enums import SpeakingState  
 from discord.ext import commands
-import sqlite3
-import random
-from time import sleep
 from discord.ext import tasks, commands
-from discord.utils import get
 
 from discord.ext.commands import has_permissions, MissingPermissions
-from discord.ext.commands import bot
-from discord.webhook import AsyncWebhookAdapter
 
 
 class Commands:
