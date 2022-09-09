@@ -1,6 +1,7 @@
 import asyncio
 from asyncio.windows_events import NULL
 import os
+import json
 import discord
 # python3 -m pip install (package).py fixes many problems
 import time
@@ -21,9 +22,21 @@ from discord.ext.commands import has_permissions, MissingPermissions
 from discord.ext.commands import bot
 from discord.webhook import AsyncWebhookAdapter
 
-token = 'MTAxNjg3OTk4MTQyODc0ODMyOA.Gs9V9L.7GzenEtp6h3tF5ToInPzD2sJO8G2IWtkLrlnsY'
+if os.path.exists(os.getcwd() + "/config.json"):
+    
+    with open("./config.json") as f:
+        configData = json.load(f)
 
-client = commands.Bot('>')
+else:
+    configTemplate = {"Token": "", "Prefix": "!"}
+
+    with open(os.getcwd() + "/config.json", "w+") as f:
+        json.dump(configTemplate, f) 
+
+token = configData["Token"]
+prefix = configData["Prefix"]
+
+client = commands.Bot(prefix)
 
 conn = sqlite3.connect('warden.db')
 c = conn.cursor()
