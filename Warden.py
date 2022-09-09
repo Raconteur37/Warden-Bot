@@ -199,7 +199,15 @@ async def ping_server_command(msg):
 #         (time,)) 
 #         print("Updated general final time.") 
 
-
+@client.command()
+@has_permissions(manage_messages=True)
+async def shop(ctx):
+    # String will be pulled from db and determine the items that rotate 
+    await ctx.send("""
+                        ```   𝐈𝐭𝐞𝐦:              𝐂𝐨𝐬𝐭: 
+""" + "- Kitpvp Cash" + "      "  + "20 Gems per $" 
+    +  '\n' + " - VIP Role" + "      "  + "50,000 Gems"
+    +  '\n' + " - Warden Tag" + "      "  + "25,000 Gems"  +  """```""")
 
 
 
