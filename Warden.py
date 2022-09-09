@@ -21,7 +21,7 @@ from discord.ext.commands import has_permissions, MissingPermissions
 from discord.ext.commands import bot
 from discord.webhook import AsyncWebhookAdapter
 
-token = '682725c7f823c7435c0eb8fd8d86b7a67b7ade3d8c642aba3f53b752adb151a0'
+token = 'MTAxNjg3OTk4MTQyODc0ODMyOA.Gs9V9L.7GzenEtp6h3tF5ToInPzD2sJO8G2IWtkLrlnsY'
 
 client = commands.Bot('>')
 
