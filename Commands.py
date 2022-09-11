@@ -7,7 +7,7 @@ import datetime
 from discord import message
 from discord import user
 from discord import channel
-from discord.client import client
+from discord import client
 from discord.enums import SpeakingState  
 from discord.ext import commands
 from discord.ext import tasks, commands

@@ -1,5 +1,17 @@
 import sqlite3
 
+#.execute(""" CREATE TABLE IF NOT EXISTS wardenMessages (
+#    id integer,
+#    name text,
+#    msg text,
+#    time integer)""")
+
+#c.execute(""" CREATE TABLE IF NOT EXISTS warden (
+#        id integer,
+#        name text,
+#        gems integer)""")
+
+#c.execute(""" CREATE TABLE IF NOT EXISTS wardenMoniter 
 
 conn = sqlite3.connect('warden.db')
 c = conn.cursor()
