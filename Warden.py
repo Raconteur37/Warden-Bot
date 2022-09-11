@@ -3,10 +3,8 @@ import os
 import json
 import discord
 # python3 -m pip install (package).py fixes many problems
-from discord.ext import commands
 import sqlite3
 from discord.ext import commands
-from discord.ext.commands import has_permissions
 
 if os.path.exists(os.getcwd() + "/config.json"):
     
@@ -14,7 +12,7 @@ if os.path.exists(os.getcwd() + "/config.json"):
         configData = json.load(f)
 
 else:
-    configTemplate = {"Token": "", "Prefix": ">"}
+    configTemplate = {"Token": "", "Prefix": ""}
 
     with open(os.getcwd() + "/config.json", "w+") as f:
         json.dump(configTemplate, f) 
@@ -22,7 +20,12 @@ else:
 token = configData["Token"]
 prefix = configData["Prefix"]
 
-bot = commands.Bot(command_prefix='>')
+intents = discord.Intents()
+intents.all()
+
+activity = discord.Activity(name=" channels...", type=3)
+bot = commands.Bot(command_prefix=">",activity=activity,intents=intents)
+
 
 conn = sqlite3.connect('warden.db')
 c = conn.cursor()
@@ -30,19 +33,19 @@ c = conn.cursor()
 
 @bot.event
 async def on_ready():
-    activity = discord.Activity(name=" channels...", type=3)
-    await bot.change_presence(status=discord.Status.do_not_disturb, activity=activity)
-    # await guessWordGame.start()
     print(f'Warden is now online')
+
 
     #
     # Commands
     #
     
-@bot.command(pass_context=True)
+@bot.command(name='ping')
 async def ping(ctx):
-	await ctx.send("pong")
+    await ctx.send("pong")
+    
  
+
 
 
 # TODO make it so all command add you to the data base and still have propper function if said person isnt in it already
@@ -72,7 +75,6 @@ async def ping_server_command(msg):
 
 
 @bot.command()
-@has_permissions(manage_messages=True)
 async def shop(ctx):
     # String will be pulled from db and determine the items that rotate 
     await ctx.send("""
