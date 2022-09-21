@@ -6,6 +6,7 @@ import discord
 import sqlite3
 from discord.ext import commands
 
+
 if os.path.exists(os.getcwd() + "/config.json"):
     
     with open("./config.json") as f:
@@ -20,11 +21,11 @@ else:
 token = configData["Token"]
 prefix = configData["Prefix"]
 
-intents = discord.Intents()
+intents = discord.Intents.all()
 intents.all()
 
 activity = discord.Activity(name=" channels...", type=3)
-bot = commands.Bot(command_prefix=">",activity=activity,intents=intents)
+bot = commands.Bot(command_prefix='>',activity=activity,intents=intents)
 
 
 conn = sqlite3.connect('warden.db')
@@ -37,10 +38,12 @@ async def on_ready():
 
 
     #
-    # Commands
+    # Commands 
     #
     
-@bot.command(name='ping')
+    #TODO Check if any command is typed or just the prefix then access the commands class to 
+    
+@bot.command(name='ping') 
 async def ping(ctx):
     await ctx.send("pong")
     
