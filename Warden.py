@@ -5,6 +5,7 @@ import discord
 # python3 -m pip install (package).py fixes many problems
 import sqlite3
 from discord.ext import commands
+from discord import Button
 
 
 if os.path.exists(os.getcwd() + "/config.json"):
@@ -46,6 +47,14 @@ async def on_ready():
 @bot.command(name='ping') 
 async def ping(ctx):
     await ctx.send("pong")
+    
+    
+@bot.command(name='break')
+async def onBreak(ctx):
+    button = Button(label="Go on break", style=discord.ButtonStyle.green)
+    #view = View()
+    #view.add_item(button)
+    await ctx.send(view=button)
     
  
 
